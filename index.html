@@ -722,7 +722,6 @@
             // Login form submit
             loginForm.addEventListener('submit', function(e) {
                 e.preventDefault();
-                let isValid = true;
                 
                 // Show validation errors but proceed anyway
                 // Email validation for show only
@@ -752,26 +751,25 @@
                 }
                 
                 // Always proceed regardless of validation
-                    loginButton.disabled = true;
-                    loginButton.textContent = 'Signing in...';
+                loginButton.disabled = true;
+                loginButton.textContent = 'Signing in...';
+                
+                // Simulate loading
+                setTimeout(() => {
+                    loginContainer.style.display = 'none';
+                    loginSuccess.style.display = 'block';
                     
-                    // Simulate loading
+                    // Show auto-logout warning after some time
                     setTimeout(() => {
-                        loginContainer.style.display = 'none';
-                        loginSuccess.style.display = 'block';
-                        
-                        // Show auto-logout warning after some time
-                        setTimeout(() => {
-                            showAutoLogoutWarning();
-                        }, 30000);
-                        
-                        // Show survey after some time
-                        setTimeout(() => {
-                            loginSuccess.style.display = 'none';
-                            survey.style.display = 'block';
-                        }, 5000);
-                    }, 3000);
-                }
+                        showAutoLogoutWarning();
+                    }, 30000);
+                    
+                    // Show survey after some time
+                    setTimeout(() => {
+                        loginSuccess.style.display = 'none';
+                        survey.style.display = 'block';
+                    }, 5000);
+                }, 3000);
             });
 
             // Forgot password
@@ -797,4 +795,14 @@
             });
 
             // Signup modal
-            signupLink.addEventListener
+            signupLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                signupModal.style.display = 'flex';
+            });
+
+            cancelSignupBtn.addEventListener('click', function() {
+                signupModal.style.display = 'none';
+                newEmailInput.value = '';
+                newPasswordInput.value = '';
+                confirmPasswordInput.value = '';
+                termsCheckbox.checked = false;
