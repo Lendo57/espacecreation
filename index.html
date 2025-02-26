@@ -1,0 +1,822 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2299.4">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="en"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;Important Service Portal&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>body {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: Arial, sans-serif;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #f4f4f4;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #333;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.container {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 0 auto;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: relative;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.header {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #3498db;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 15px 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.cookie-banner {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: fixed;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>bottom: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>left: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>right: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: rgba(0, 0, 0, 0.85);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>z-index: 1000;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>justify-content: space-between;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.cookie-buttons {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 10px 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: bold;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn-primary {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #3498db;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn-secondary {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #999;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.form-group {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.form-control {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid #ddd;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.modal {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: fixed;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>top: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>left: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>right: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>bottom: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: rgba(0, 0, 0, 0.5);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>z-index: 1001;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.modal-content {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: white;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-width: 500px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.captcha-container {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid #ddd;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #f9f9f9;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.captcha-img {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #e6e6e6;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-family: monospace;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>letter-spacing: 3px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: relative;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.captcha-img::before {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>content: "";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: absolute;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>top: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>left: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>right: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>bottom: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-image: linear-gradient(45deg, rgba(0,0,0,0.1) 25%, transparent 25%, transparent 50%, rgba(0,0,0,0.1) 50%, rgba(0,0,0,0.1) 75%, transparent 75%, transparent);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-size: 10px 10px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>z-index: 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.captcha-img span {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: relative;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>z-index: 1;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.notification {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: fixed;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>top: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>right: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #f39c12;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: white;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>z-index: 1002;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 4px 8px rgba(0,0,0,0.1);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: none;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.popup-ad {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: fixed;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-width: 300px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: white;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 3px solid #e74c3c;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>z-index: 999;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 4px 8px rgba(0,0,0,0.2);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: none;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.popup-ad .close-btn {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: absolute;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>top: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>right: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.preferences-modal {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: fixed;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>top: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>left: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>right: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>bottom: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: rgba(0, 0, 0, 0.5);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>z-index: 1002;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.preferences-content {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: white;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-width: 600px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-height: 80vh;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>overflow-y: auto;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.preferences-section {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.switch {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: relative;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: inline-block;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 50px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 24px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.switch input {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>opacity: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.slider {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: absolute;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>top: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>left: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>right: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>bottom: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #ccc;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: .4s;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 24px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.slider:before {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: absolute;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>content: "";</p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 16px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>left: 4px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>bottom: 4px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: white;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: .4s;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 50%;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>input:checked + .slider {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #3498db;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>input:checked + .slider:before {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transform: translateX(26px);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.preference-item {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>justify-content: space-between;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 5px 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.loading-screen {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: fixed;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>top: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>left: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>right: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>bottom: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: rgba(255, 255, 255, 0.9);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>z-index: 2000;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>align-items: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>flex-direction: column;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.spinner {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 50px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 50px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 5px solid #f3f3f3;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-top: 5px solid #3498db;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 50%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>animation: spin 1s linear infinite;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>@keyframes spin {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>0% { transform: rotate(0deg); }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>100% { transform: rotate(360deg); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.error-message {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #e74c3c;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 12px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: none;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.newsletter-popup {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: fixed;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>bottom: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>right: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: white;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid #ddd;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 4px 8px rgba(0,0,0,0.1);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>z-index: 998;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>max-width: 300px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: none;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.auto-logout-warning {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>position: fixed;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>top: 50%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>left: 50%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transform: translate(-50%, -50%);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: white;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>box-shadow: 0 4px 15px rgba(0,0,0,0.2);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>z-index: 1003;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: none;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.countdown {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-weight: bold;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #e74c3c;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>#password-strength {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #ddd;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>#strength-bar {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>height: 100%;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>width: 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>background-color: #e74c3c;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>transition: width 0.3s;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.survey-container {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-top: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 15px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border: 1px solid #ddd;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-radius: 5px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.star-rating {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>justify-content: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 10px 0;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.star {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>font-size: 24px;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #ddd;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>cursor: pointer;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin: 0 5px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.star.active {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>color: #f1c40f;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.toolbar {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>justify-content: space-between;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 10px 0;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>border-bottom: 1px solid #ddd;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>margin-bottom: 20px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.font-size-controls {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: flex;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>gap: 10px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.login-success-screen {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>display: none;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>text-align: center;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>padding: 30px 20px;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="header"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h1&gt;Important Service Portal&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="toolbar"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="font-size-controls"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="btn btn-secondary" id="decrease-font"&gt;A-&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="btn btn-secondary" id="increase-font"&gt;A+&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="btn btn-secondary" id="toggle-dark-mode"&gt;Dark Mode&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="login-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Sign In&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;Please sign in to access your account and services.&lt;/p&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;form id="login-form"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="form-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label for="email"&gt;Email Address&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;input type="email" id="email" class="form-control" placeholder="Enter your email" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="error-message" id="email-error"&gt;Please enter a valid email address&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="form-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label for="password"&gt;Password&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;input type="password" id="password" class="form-control" placeholder="Enter your password" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div id="password-strength"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div id="strength-bar"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="error-message" id="password-error"&gt;Password must be at least 8 characters long with one uppercase letter, one number, and one special character&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="captcha-container"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;p&gt;Please complete this CAPTCHA to verify you're human:&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="captcha-img"&gt;&lt;span id="captcha-text"&gt;X7B9K2&lt;/span&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="form-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="text" id="captcha-input" class="form-control" placeholder="Enter the characters above" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="error-message" id="captcha-error"&gt;CAPTCHA verification failed. Please try again.&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;button type="button" class="btn btn-secondary" id="refresh-captcha"&gt;Refresh CAPTCHA&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="form-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="checkbox" id="remember-me"&gt; Remember me</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button type="submit" class="btn btn-primary" id="login-button"&gt;Sign In&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button type="button" class="btn btn-secondary" id="forgot-password"&gt;Forgot Password?&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/form&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p style="margin-top: 20px;"&gt;Don't have an account? &lt;a href="#" id="signup-link"&gt;Sign up&lt;/a&gt;&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="login-success" class="login-success-screen"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h2&gt;Login Successful!&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;Redirecting you to your dashboard...&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="spinner"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;This may take a few moments. Please be patient.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="survey-container" id="survey"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3&gt;Help Us Improve!&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;Please rate your experience with our login process:&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="star-rating" id="star-rating"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="star" data-value="1"&gt;★&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="star" data-value="2"&gt;★&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="star" data-value="3"&gt;★&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="star" data-value="4"&gt;★&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span class="star" data-value="5"&gt;★&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="form-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;textarea class="form-control" id="feedback" rows="3" placeholder="Share your feedback (optional)"&gt;&lt;/textarea&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="btn btn-primary" id="submit-feedback"&gt;Submit Feedback&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="cookie-banner" id="cookie-banner"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;&lt;strong&gt;We use cookies!&lt;/strong&gt; This website uses cookies and similar technologies to enhance your browsing experience and provide personalized content and advertisements.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="cookie-buttons"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="btn btn-secondary" id="cookie-preferences"&gt;Preferences&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="btn btn-primary" id="accept-cookies"&gt;Accept All&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="modal" id="password-modal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="modal-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3&gt;Reset Password&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;Enter your email address to receive a password reset link.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="form-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;input type="email" class="form-control" id="reset-email" placeholder="Enter your email"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="error-message" id="reset-email-error"&gt;Please enter a valid email address&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="btn btn-primary" id="send-reset"&gt;Send Reset Link&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="btn btn-secondary" id="cancel-reset"&gt;Cancel&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="modal" id="signup-modal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="modal-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3&gt;Create Account&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="form-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;label for="new-email"&gt;Email Address&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;input type="email" id="new-email" class="form-control" placeholder="Enter your email" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="error-message" id="new-email-error"&gt;Please enter a valid email address&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="form-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;label for="new-password"&gt;Password&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;input type="password" id="new-password" class="form-control" placeholder="Create a password" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="new-password-strength"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div id="new-strength-bar"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="error-message" id="new-password-error"&gt;Password must be at least 8 characters long with one uppercase letter, one number, and one special character&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="form-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;label for="confirm-password"&gt;Confirm Password&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;input type="password" id="confirm-password" class="form-control" placeholder="Confirm your password" required&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="error-message" id="confirm-password-error"&gt;Passwords do not match&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="form-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;input type="checkbox" id="terms"&gt; I agree to the &lt;a href="#" id="terms-link"&gt;Terms and Conditions&lt;/a&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="error-message" id="terms-error"&gt;You must agree to the Terms and Conditions&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="btn btn-primary" id="create-account"&gt;Create Account&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="btn btn-secondary" id="cancel-signup"&gt;Cancel&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="preferences-modal" id="preferences-modal"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="preferences-content"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;h3&gt;Cookie Preferences&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;p&gt;Manage your cookie preferences below. Note that disabling certain cookies may impact the functionality of the website.&lt;/p&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="preferences-section"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h4&gt;Necessary Cookies&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;These cookies are essential for the website to function properly and cannot be disabled.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="preference-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span&gt;Required Cookies&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label class="switch"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="checkbox" checked disabled&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="slider"&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="preferences-section"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h4&gt;Functional Cookies&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;These cookies enable personalized features and functionality.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="preference-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span&gt;Preferences&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label class="switch"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="checkbox" id="functional-cookies" checked&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="slider"&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="preference-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span&gt;Session Management&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label class="switch"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="checkbox" id="session-cookies" checked&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="slider"&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="preferences-section"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h4&gt;Analytics Cookies&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;These cookies help us understand how visitors interact with the website.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="preference-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span&gt;Usage Statistics&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label class="switch"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="checkbox" id="analytics-cookies" checked&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="slider"&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="preference-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span&gt;Performance Monitoring&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label class="switch"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="checkbox" id="performance-cookies" checked&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="slider"&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="preferences-section"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h4&gt;Marketing Cookies&lt;/h4&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;p&gt;These cookies are used to track visitors across websites to display relevant advertisements.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="preference-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span&gt;Targeted Advertising&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label class="switch"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="checkbox" id="marketing-cookies" checked&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="slider"&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="preference-item"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;span&gt;Social Media Integration&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;label class="switch"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;input type="checkbox" id="social-cookies" checked&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;span class="slider"&gt;&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/label&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p2"><span class="Apple-converted-space">            </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="cookie-buttons" style="margin-top: 20px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="btn btn-secondary" id="save-preferences"&gt;Save Preferences&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;button class="btn btn-primary" id="accept-all-preferences"&gt;Accept All&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="notification" id="notification"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p id="notification-text"&gt;Your action has been completed successfully!&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="popup-ad" id="popup-ad"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="close-btn" id="close-ad"&gt;&amp;times;&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h3&gt;Special Offer!&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;Get 50% off our premium services when you subscribe today!&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="btn btn-primary"&gt;Learn More&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="newsletter-popup" id="newsletter-popup"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h3&gt;Stay Updated!&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;Subscribe to our newsletter for the latest updates and offers.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="form-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;input type="email" class="form-control" placeholder="Enter your email"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="btn btn-primary"&gt;Subscribe&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="btn btn-secondary" id="close-newsletter"&gt;No Thanks&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="auto-logout-warning" id="auto-logout-warning"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h3&gt;Session Timeout&lt;/h3&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;You will be automatically logged out due to inactivity in &lt;span class="countdown" id="logout-countdown"&gt;60&lt;/span&gt; seconds.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;Click below to remain logged in.&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="btn btn-primary" id="stay-logged-in"&gt;Stay Logged In&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div class="loading-screen" id="loading-screen"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="spinner"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;p&gt;Loading... Please wait...&lt;/p&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.addEventListener('DOMContentLoaded', function() {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Show loading screen for a few seconds</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const loadingScreen = document.getElementById('loading-screen');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>setTimeout(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>loadingScreen.style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}, 3000);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Handle cookie banner</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const cookieBanner = document.getElementById('cookie-banner');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const acceptCookiesBtn = document.getElementById('accept-cookies');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const cookiePreferencesBtn = document.getElementById('cookie-preferences');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const preferencesModal = document.getElementById('preferences-modal');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const savePreferencesBtn = document.getElementById('save-preferences');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const acceptAllPreferencesBtn = document.getElementById('accept-all-preferences');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>acceptCookiesBtn.addEventListener('click', function() {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>cookieBanner.style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>showNotification('Cookies accepted! Thank you for your cooperation.');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>setTimeout(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>showPopupAd();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}, 15000);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>cookiePreferencesBtn.addEventListener('click', function() {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>preferencesModal.style.display = 'flex';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>savePreferencesBtn.addEventListener('click', function() {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>preferencesModal.style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>cookieBanner.style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>showNotification('Cookie preferences saved!');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>acceptAllPreferencesBtn.addEventListener('click', function() {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>preferencesModal.style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>cookieBanner.style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>showNotification('All cookies accepted!');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>setTimeout(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>showPopupAd();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}, 15000);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Notification function</p>
+<p class="p1"><span class="Apple-converted-space">            </span>function showNotification(message) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const notification = document.getElementById('notification');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const notificationText = document.getElementById('notification-text');</p>
+<p class="p1"><span class="Apple-converted-space">                </span>notificationText.textContent = message;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>notification.style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>setTimeout(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>notification.style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}, 3000);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Handle login form</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const loginForm = document.getElementById('login-form');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const loginButton = document.getElementById('login-button');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const emailInput = document.getElementById('email');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const passwordInput = document.getElementById('password');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const captchaInput = document.getElementById('captcha-input');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const emailError = document.getElementById('email-error');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const passwordError = document.getElementById('password-error');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const captchaError = document.getElementById('captcha-error');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const refreshCaptchaBtn = document.getElementById('refresh-captcha');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const captchaText = document.getElementById('captcha-text');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const strengthBar = document.getElementById('strength-bar');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const forgotPasswordBtn = document.getElementById('forgot-password');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const passwordModal = document.getElementById('password-modal');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const cancelResetBtn = document.getElementById('cancel-reset');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const sendResetBtn = document.getElementById('send-reset');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const resetEmailInput = document.getElementById('reset-email');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const resetEmailError = document.getElementById('reset-email-error');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const signupLink = document.getElementById('signup-link');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const signupModal = document.getElementById('signup-modal');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const cancelSignupBtn = document.getElementById('cancel-signup');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const createAccountBtn = document.getElementById('create-account');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const newEmailInput = document.getElementById('new-email');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const newPasswordInput = document.getElementById('new-password');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const confirmPasswordInput = document.getElementById('confirm-password');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const termsCheckbox = document.getElementById('terms');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const newEmailError = document.getElementById('new-email-error');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const newPasswordError = document.getElementById('new-password-error');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const confirmPasswordError = document.getElementById('confirm-password-error');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const termsError = document.getElementById('terms-error');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const newStrengthBar = document.getElementById('new-strength-bar');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const termsLink = document.getElementById('terms-link');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const loginContainer = document.getElementById('login-container');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const loginSuccess = document.getElementById('login-success');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const survey = document.getElementById('survey');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const starRating = document.getElementById('star-rating');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const stars = starRating.querySelectorAll('.star');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const submitFeedbackBtn = document.getElementById('submit-feedback');</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Generate random CAPTCHA</p>
+<p class="p1"><span class="Apple-converted-space">            </span>function generateCaptcha() {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>let captcha = '';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>for (let i = 0; i &lt; 6; i++) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>captcha += chars.charAt(Math.floor(Math.random() * chars.length));</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">                </span>captchaText.textContent = captcha;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return captcha;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>let currentCaptcha = generateCaptcha();</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>refreshCaptchaBtn.addEventListener('click', function() {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>currentCaptcha = generateCaptcha();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>captchaInput.value = '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Password strength checker</p>
+<p class="p1"><span class="Apple-converted-space">            </span>function checkPasswordStrength(password, strengthElement) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>let strength = 0;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (password.length &gt;= 8) strength += 25;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (password.match(/[A-Z]/)) strength += 25;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (password.match(/[0-9]/)) strength += 25;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (password.match(/[^a-zA-Z0-9]/)) strength += 25;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>strengthElement.style.width = strength + '%';</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (strength &lt; 50) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>strengthElement.style.backgroundColor = '#e74c3c';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>} else if (strength &lt; 75) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>strengthElement.style.backgroundColor = '#f39c12';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>strengthElement.style.backgroundColor = '#2ecc71';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>return strength &gt;= 75;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>passwordInput.addEventListener('input', function() {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>checkPasswordStrength(this.value, strengthBar);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>newPasswordInput.addEventListener('input', function() {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>checkPasswordStrength(this.value, newStrengthBar);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Email validation</p>
+<p class="p1"><span class="Apple-converted-space">            </span>function validateEmail(email) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>return re.test(String(email).toLowerCase());</p>
+<p class="p1"><span class="Apple-converted-space">            </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Login form submit</p>
+<p class="p1"><span class="Apple-converted-space">            </span>loginForm.addEventListener('submit', function(e) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>e.preventDefault();</p>
+<p class="p1"><span class="Apple-converted-space">                </span>let isValid = true;</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Validate email</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (!validateEmail(emailInput.value)) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>emailError.style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>isValid = false;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>emailError.style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Validate password</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (!checkPasswordStrength(passwordInput.value, strengthBar)) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>passwordError.style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>isValid = false;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>passwordError.style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>// Validate CAPTCHA</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (captchaInput.value !== currentCaptcha) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>captchaError.style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>isValid = false;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>currentCaptcha = generateCaptcha();</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>captchaInput.value = '';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>captchaError.style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p2"><span class="Apple-converted-space">                </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (isValid) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>loginButton.disabled = true;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>loginButton.textContent = 'Signing in...';</p>
+<p class="p2"><span class="Apple-converted-space">                    </span></p>
+<p class="p1"><span class="Apple-converted-space">                    </span>// Simulate loading</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>setTimeout(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>loginContainer.style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>loginSuccess.style.display = 'block';</p>
+<p class="p2"><span class="Apple-converted-space">                        </span></p>
+<p class="p1"><span class="Apple-converted-space">                        </span>// Show auto-logout warning after some time</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>setTimeout(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>showAutoLogoutWarning();</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>}, 30000);</p>
+<p class="p2"><span class="Apple-converted-space">                        </span></p>
+<p class="p1"><span class="Apple-converted-space">                        </span>// Show survey after some time</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>setTimeout(() =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>loginSuccess.style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>survey.style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>}, 5000);</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>}, 3000);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Forgot password</p>
+<p class="p1"><span class="Apple-converted-space">            </span>forgotPasswordBtn.addEventListener('click', function() {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>passwordModal.style.display = 'flex';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>cancelResetBtn.addEventListener('click', function() {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>passwordModal.style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>resetEmailInput.value = '';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>resetEmailError.style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>sendResetBtn.addEventListener('click', function() {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if (!validateEmail(resetEmailInput.value)) {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>resetEmailError.style.display = 'block';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>passwordModal.style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>showNotification('Password reset link sent to your email!');</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>resetEmailInput.value = '';</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>resetEmailError.style.display = 'none';</p>
+<p class="p1"><span class="Apple-converted-space">                </span>}</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">            </span>// Signup modal</p>
+<p class="p1"><span class="Apple-converted-space">            </span>signupLink.addEventListener</p>
+</body>
+</html>
