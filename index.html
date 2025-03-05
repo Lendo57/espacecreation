@@ -1,14 +1,4 @@
-<!-- Terms Page -->
-    <div class="container hidden" id="termsPage">
-        <h1>Conditions</h1>
-        <div id="termsPageText"></div>
-        <div class="loading-bar">
-            <div class="loading-progress" id="termsPageProgress"></div>
-        </div>
-        <button id="acceptTerms" class="hidden">J'accepte</button>
-    </div>            if (event.target === document.getElementById('termsModal') && !document.getElementById('closeTerms').classList.contains('hidden')) {
-                document.getElementById('termsModal').style.display = 'none';
-            }<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -273,6 +263,16 @@
             <div id="termsText"></div>
             <button id="closeTerms" class="hidden">J'accepte</button>
         </div>
+    </div>
+
+    <!-- Terms Page -->
+    <div class="container hidden" id="termsPage">
+        <h1>Conditions</h1>
+        <div id="termsPageText"></div>
+        <div class="loading-bar">
+            <div class="loading-progress" id="termsPageProgress"></div>
+        </div>
+        <button id="acceptTerms" class="hidden">J'accepte</button>
     </div>
 
     <!-- Captcha Page -->
@@ -600,7 +600,7 @@
 
         // Close modals when clicking outside
         window.addEventListener('click', function(event) {
-            if (event.target === document.getElementById('termsModal')) {
+            if (event.target === document.getElementById('termsModal') && !document.getElementById('closeTerms').classList.contains('hidden')) {
                 document.getElementById('termsModal').style.display = 'none';
             }
             if (event.target === document.getElementById('recipeModal') && !document.getElementById('closeRecipe').classList.contains('hidden')) {
