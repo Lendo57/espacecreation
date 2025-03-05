@@ -66,25 +66,6 @@
             border: 1px solid #ddd;
             border-radius: 5px;
         }
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, 0.5);
-            z-index: 1001;
-            justify-content: center;
-            align-items: center;
-        }
-        .modal-content {
-            background-color: white;
-            padding: 20px;
-            border-radius: 5px;
-            max-width: 500px;
-            width: 100%;
-        }
         .captcha-container {
             margin-top: 20px;
             padding: 15px;
@@ -131,14 +112,17 @@
         }
         .popup-ad {
             position: fixed;
-            max-width: 300px;
-            padding: 15px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            max-width: 400px;
+            width: 90%;
+            padding: 20px;
             background-color: white;
             border: 3px solid #e74c3c;
             border-radius: 5px;
             z-index: 999;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            display: none;
         }
         .popup-ad .close-btn {
             position: absolute;
@@ -150,7 +134,6 @@
             cursor: pointer;
         }
         .preferences-modal {
-            display: none;
             position: fixed;
             top: 0;
             left: 0;
@@ -158,6 +141,7 @@
             bottom: 0;
             background-color: rgba(0, 0, 0, 0.5);
             z-index: 1002;
+            display: flex;
             justify-content: center;
             align-items: center;
         }
@@ -218,19 +202,6 @@
             align-items: center;
             padding: 5px 0;
         }
-        .loading-screen {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(255, 255, 255, 0.9);
-            z-index: 2000;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-        }
         .spinner {
             width: 50px;
             height: 50px;
@@ -238,7 +209,7 @@
             border-top: 5px solid #3498db;
             border-radius: 50%;
             animation: spin 1s linear infinite;
-            margin-bottom: 20px;
+            margin: 20px auto;
         }
         @keyframes spin {
             0% { transform: rotate(0deg); }
@@ -252,16 +223,17 @@
         }
         .newsletter-popup {
             position: fixed;
-            bottom: 20px;
-            right: 20px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             background-color: white;
             border: 1px solid #ddd;
-            padding: 15px;
+            padding: 20px;
             border-radius: 5px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.1);
             z-index: 998;
-            max-width: 300px;
-            display: none;
+            max-width: 400px;
+            width: 90%;
         }
         .auto-logout-warning {
             position: fixed;
@@ -274,7 +246,8 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.2);
             z-index: 1003;
             text-align: center;
-            display: none;
+            max-width: 400px;
+            width: 90%;
         }
         .countdown {
             font-weight: bold;
@@ -292,7 +265,6 @@
             transition: width 0.3s;
         }
         .survey-container {
-            display: none;
             margin-top: 20px;
             padding: 15px;
             border: 1px solid #ddd;
@@ -323,10 +295,80 @@
             display: flex;
             gap: 10px;
         }
-        .login-success-screen {
+        .screen {
             display: none;
+        }
+        .screen.active {
+            display: block;
+        }
+        .update-required {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 1004;
             text-align: center;
-            padding: 30px 20px;
+            max-width: 400px;
+            width: 90%;
+        }
+        .maintenance-notice {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: #e74c3c;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            z-index: 1005;
+        }
+        .screen-content {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        .progress-steps::before {
+            content: '';
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            right: 20px;
+            height: 2px;
+            background-color: #ddd;
+            z-index: 0;
+        }
+        .step {
+            position: relative;
+            z-index: 1;
+            background-color: #f4f4f4;
+            padding: 0 5px;
+        }
+        .step-circle {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background-color: #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 5px;
+        }
+        .step.active .step-circle {
+            background-color: #3498db;
+            color: white;
+        }
+        .required-field {
+            color: red;
         }
     </style>
 </head>
@@ -335,141 +377,70 @@
         <h1>Important Service Portal</h1>
     </div>
 
-    <div class="container">
-        <div class="toolbar">
-            <div class="font-size-controls">
-                <button class="btn btn-secondary" id="decrease-font">A-</button>
-                <button class="btn btn-secondary" id="increase-font">A+</button>
-            </div>
-            <button class="btn btn-secondary" id="toggle-dark-mode">Dark Mode</button>
-        </div>
-
-        <div id="login-container">
-            <h2>Sign In</h2>
-            <p>Please sign in to access your account and services.</p>
+    <!-- Screen 1: Initial Signup Form -->
+    <div id="screen-signup" class="screen active">
+        <div class="screen-content">
+            <h2>Create an Account</h2>
+            <p>Please complete all required fields to continue.</p>
             
-            <form id="login-form">
+            <form id="signup-form">
                 <div class="form-group">
-                    <label for="email">Email Address</label>
-                    <input type="email" id="email" class="form-control" placeholder="Enter your email" required>
-                    <div class="error-message" id="email-error">Please enter a valid email address</div>
+                    <label for="signup-email">Email Address <span class="required-field">*</span></label>
+                    <input type="email" id="signup-email" class="form-control" placeholder="Enter your email" required>
+                    <div class="error-message" id="signup-email-error">Please enter a valid email address</div>
                 </div>
                 
                 <div class="form-group">
-                    <label for="password">Password</label>
-                    <input type="password" id="password" class="form-control" placeholder="Enter your password" required>
+                    <label for="signup-password">Password <span class="required-field">*</span></label>
+                    <input type="password" id="signup-password" class="form-control" placeholder="Create a password" required>
                     <div id="password-strength">
                         <div id="strength-bar"></div>
                     </div>
-                    <div class="error-message" id="password-error">Password must be at least 8 characters long with one uppercase letter, one number, and one special character</div>
+                    <div class="error-message" id="signup-password-error">Password must be at least 8 characters long with one uppercase letter, one number, and one special character</div>
                 </div>
-
-                <div class="captcha-container">
-                    <p>Please complete this CAPTCHA to verify you're human:</p>
-                    <div class="captcha-img"><span id="captcha-text">X7B9K2</span></div>
-                    <div class="form-group">
-                        <input type="text" id="captcha-input" class="form-control" placeholder="Enter the characters above" required>
-                        <div class="error-message" id="captcha-error">CAPTCHA verification failed. Please try again.</div>
-                    </div>
-                    <button type="button" class="btn btn-secondary" id="refresh-captcha">Refresh CAPTCHA</button>
+                
+                <div class="form-group">
+                    <label for="signup-confirm-password">Confirm Password <span class="required-field">*</span></label>
+                    <input type="password" id="signup-confirm-password" class="form-control" placeholder="Confirm your password" required>
+                    <div class="error-message" id="signup-confirm-error">Passwords do not match</div>
                 </div>
                 
                 <div class="form-group">
                     <label>
-                        <input type="checkbox" id="remember-me"> Remember me
+                        <input type="checkbox" id="signup-terms"> I agree to the <a href="#" id="terms-link">Terms and Conditions</a> <span class="required-field">*</span>
                     </label>
+                    <div class="error-message" id="signup-terms-error">You must agree to the Terms and Conditions</div>
                 </div>
                 
-                <button type="submit" class="btn btn-primary" id="login-button">Sign In</button>
-                <button type="button" class="btn btn-secondary" id="forgot-password">Forgot Password?</button>
+                <button type="submit" class="btn btn-primary" id="signup-button">Create Account</button>
             </form>
-
-            <p style="margin-top: 20px;">Don't have an account? <a href="#" id="signup-link">Sign up</a></p>
-        </div>
-
-        <div id="login-success" class="login-success-screen">
-            <h2>Login Successful!</h2>
-            <p>Redirecting you to your dashboard...</p>
-            <div class="spinner"></div>
-            <p>This may take a few moments. Please be patient.</p>
-        </div>
-
-        <div class="survey-container" id="survey">
-            <h3>Help Us Improve!</h3>
-            <p>Please rate your experience with our login process:</p>
-            <div class="star-rating" id="star-rating">
-                <span class="star" data-value="1">★</span>
-                <span class="star" data-value="2">★</span>
-                <span class="star" data-value="3">★</span>
-                <span class="star" data-value="4">★</span>
-                <span class="star" data-value="5">★</span>
-            </div>
-            <div class="form-group">
-                <textarea class="form-control" id="feedback" rows="3" placeholder="Share your feedback (optional)"></textarea>
-            </div>
-            <button class="btn btn-primary" id="submit-feedback">Submit Feedback</button>
         </div>
     </div>
 
-    <div class="cookie-banner" id="cookie-banner">
-        <div>
-            <p><strong>We use cookies!</strong> This website uses cookies and similar technologies to enhance your browsing experience and provide personalized content and advertisements.</p>
-        </div>
-        <div class="cookie-buttons">
-            <button class="btn btn-secondary" id="cookie-preferences">Preferences</button>
-            <button class="btn btn-primary" id="accept-cookies">Accept All</button>
-        </div>
-    </div>
-
-    <div class="modal" id="password-modal">
-        <div class="modal-content">
-            <h3>Reset Password</h3>
-            <p>Enter your email address to receive a password reset link.</p>
-            <div class="form-group">
-                <input type="email" class="form-control" id="reset-email" placeholder="Enter your email">
-                <div class="error-message" id="reset-email-error">Please enter a valid email address</div>
-            </div>
-            <button class="btn btn-primary" id="send-reset">Send Reset Link</button>
-            <button class="btn btn-secondary" id="cancel-reset">Cancel</button>
-        </div>
-    </div>
-
-    <div class="modal" id="signup-modal">
-        <div class="modal-content">
-            <h3>Create Account</h3>
-            <div class="form-group">
-                <label for="new-email">Email Address</label>
-                <input type="email" id="new-email" class="form-control" placeholder="Enter your email" required>
-                <div class="error-message" id="new-email-error">Please enter a valid email address</div>
-            </div>
-            <div class="form-group">
-                <label for="new-password">Password</label>
-                <input type="password" id="new-password" class="form-control" placeholder="Create a password" required>
-                <div id="new-password-strength">
-                    <div id="new-strength-bar"></div>
+    <!-- Screen 2: CAPTCHA Verification -->
+    <div id="screen-captcha" class="screen">
+        <div class="screen-content">
+            <h2>Security Verification</h2>
+            <p>Please complete this CAPTCHA to verify you're human.</p>
+            
+            <div class="captcha-container">
+                <div class="captcha-img"><span id="captcha-text">X7B9K2</span></div>
+                <div class="form-group">
+                    <input type="text" id="captcha-input" class="form-control" placeholder="Enter the characters above" required>
+                    <div class="error-message" id="captcha-error">CAPTCHA verification failed. Please try again.</div>
                 </div>
-                <div class="error-message" id="new-password-error">Password must be at least 8 characters long with one uppercase letter, one number, and one special character</div>
+                <button type="button" class="btn btn-secondary" id="refresh-captcha">Refresh CAPTCHA</button>
             </div>
-            <div class="form-group">
-                <label for="confirm-password">Confirm Password</label>
-                <input type="password" id="confirm-password" class="form-control" placeholder="Confirm your password" required>
-                <div class="error-message" id="confirm-password-error">Passwords do not match</div>
-            </div>
-            <div class="form-group">
-                <label>
-                    <input type="checkbox" id="terms"> I agree to the <a href="#" id="terms-link">Terms and Conditions</a>
-                </label>
-                <div class="error-message" id="terms-error">You must agree to the Terms and Conditions</div>
-            </div>
-            <button class="btn btn-primary" id="create-account">Create Account</button>
-            <button class="btn btn-secondary" id="cancel-signup">Cancel</button>
+            
+            <button class="btn btn-primary" id="verify-captcha">Verify</button>
         </div>
     </div>
 
-    <div class="preferences-modal" id="preferences-modal">
-        <div class="preferences-content">
-            <h3>Cookie Preferences</h3>
-            <p>Manage your cookie preferences below. Note that disabling certain cookies may impact the functionality of the website.</p>
+    <!-- Screen 3: Cookie Consent -->
+    <div id="screen-cookies" class="screen">
+        <div class="screen-content">
+            <h2>Cookie Consent Required</h2>
+            <p>This website uses cookies and similar technologies to enhance your browsing experience and provide personalized content and advertisements.</p>
             
             <div class="preferences-section">
                 <h4>Necessary Cookies</h4>
@@ -502,20 +473,64 @@
                 </div>
             </div>
             
+            <div class="cookie-buttons" style="margin-top: 20px;">
+                <button class="btn btn-secondary" id="customize-cookies">Customize</button>
+                <button class="btn btn-primary" id="accept-cookies">Accept All</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen 4: Cookie Preferences -->
+    <div id="screen-cookie-preferences" class="screen">
+        <div class="screen-content">
+            <h2>Cookie Preferences</h2>
+            <p>Manage your cookie preferences below. Note that disabling certain cookies may impact the functionality of the website.</p>
+            
+            <div class="preferences-section">
+                <h4>Necessary Cookies</h4>
+                <p>These cookies are essential for the website to function properly and cannot be disabled.</p>
+                <div class="preference-item">
+                    <span>Required Cookies</span>
+                    <label class="switch">
+                        <input type="checkbox" checked disabled>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            
+            <div class="preferences-section">
+                <h4>Functional Cookies</h4>
+                <p>These cookies enable personalized features and functionality.</p>
+                <div class="preference-item">
+                    <span>Preferences</span>
+                    <label class="switch">
+                        <input type="checkbox" id="pref-functional-cookies" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+                <div class="preference-item">
+                    <span>Session Management</span>
+                    <label class="switch">
+                        <input type="checkbox" id="pref-session-cookies" checked>
+                        <span class="slider"></span>
+                    </label>
+                </div>
+            </div>
+            
             <div class="preferences-section">
                 <h4>Analytics Cookies</h4>
                 <p>These cookies help us understand how visitors interact with the website.</p>
                 <div class="preference-item">
                     <span>Usage Statistics</span>
                     <label class="switch">
-                        <input type="checkbox" id="analytics-cookies" checked>
+                        <input type="checkbox" id="pref-analytics-cookies" checked>
                         <span class="slider"></span>
                     </label>
                 </div>
                 <div class="preference-item">
                     <span>Performance Monitoring</span>
                     <label class="switch">
-                        <input type="checkbox" id="performance-cookies" checked>
+                        <input type="checkbox" id="pref-performance-cookies" checked>
                         <span class="slider"></span>
                     </label>
                 </div>
@@ -527,145 +542,220 @@
                 <div class="preference-item">
                     <span>Targeted Advertising</span>
                     <label class="switch">
-                        <input type="checkbox" id="marketing-cookies" checked>
+                        <input type="checkbox" id="pref-marketing-cookies" checked>
                         <span class="slider"></span>
                     </label>
                 </div>
                 <div class="preference-item">
                     <span>Social Media Integration</span>
                     <label class="switch">
-                        <input type="checkbox" id="social-cookies" checked>
+                        <input type="checkbox" id="pref-social-cookies" checked>
                         <span class="slider"></span>
                     </label>
                 </div>
             </div>
             
             <div class="cookie-buttons" style="margin-top: 20px;">
-                <button class="btn btn-secondary" id="save-preferences">Save Preferences</button>
-                <button class="btn btn-primary" id="accept-all-preferences">Accept All</button>
+                <button class="btn btn-secondary" id="back-to-cookies">Back</button>
+                <button class="btn btn-primary" id="save-preferences">Save Preferences</button>
             </div>
         </div>
     </div>
 
+    <!-- Screen 5: Loading Screen -->
+    <div id="screen-loading" class="screen">
+        <div class="screen-content" style="text-align: center;">
+            <h2>Setting Up Your Account</h2>
+            <p>Please wait while we set up your account...</p>
+            <div class="spinner"></div>
+            <p id="loading-status">Initializing...</p>
+        </div>
+    </div>
+
+    <!-- Screen 6: Dashboard -->
+    <div id="screen-dashboard" class="screen">
+        <div class="screen-content">
+            <h2>Welcome to Your Dashboard</h2>
+            <p>Thank you for creating an account. Your dashboard is being prepared.</p>
+            <div class="progress-steps">
+                <div class="step active">
+                    <div class="step-circle">1</div>
+                    <div>Account</div>
+                </div>
+                <div class="step">
+                    <div class="step-circle">2</div>
+                    <div>Profile</div>
+                </div>
+                <div class="step">
+                    <div class="step-circle">3</div>
+                    <div>Settings</div>
+                </div>
+                <div class="step">
+                    <div class="step-circle">4</div>
+                    <div>Complete</div>
+                </div>
+            </div>
+            <p>Complete your profile to unlock all features:</p>
+            <button class="btn btn-primary" id="complete-profile">Complete Profile</button>
+        </div>
+    </div>
+
+    <!-- Screen 7: Session Expired -->
+    <div id="screen-session-expired" class="screen">
+        <div class="screen-content" style="text-align: center;">
+            <h2>Session Expired</h2>
+            <p>Your session has expired due to inactivity.</p>
+            <p>Please log in again to continue.</p>
+            <button class="btn btn-primary" id="login-again">Log In Again</button>
+        </div>
+    </div>
+
+    <!-- Screen 8: Login Form -->
+    <div id="screen-login" class="screen">
+        <div class="screen-content">
+            <h2>Sign In</h2>
+            <p>Please sign in to access your account.</p>
+            
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Email Address</label>
+                    <input type="email" id="login-email" class="form-control" placeholder="Enter your email" required>
+                    <div class="error-message" id="login-email-error">Please enter a valid email address</div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="login-password">Password</label>
+                    <input type="password" id="login-password" class="form-control" placeholder="Enter your password" required>
+                    <div class="error-message" id="login-password-error">Incorrect password. Please try again.</div>
+                </div>
+                
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" id="remember-me"> Remember me
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" id="login-button">Sign In</button>
+                <button type="button" class="btn btn-secondary" id="forgot-password">Forgot Password?</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Screen 9: Advertisement -->
+    <div id="screen-advertisement" class="screen">
+        <div class="popup-ad">
+            <button class="close-btn" id="close-ad">&times;</button>
+            <h3>Special Offer!</h3>
+            <p>Congratulations! You've been selected for our exclusive premium membership offer.</p>
+            <p>Get 50% off our premium services when you subscribe today!</p>
+            <div style="text-align: center; margin-top: 20px;">
+                <img src="/api/placeholder/300/150" alt="Special offer" style="max-width: 100%;">
+            </div>
+            <button class="btn btn-primary" id="view-offer" style="width: 100%; margin-top: 20px;">View Special Offer</button>
+            <button class="btn btn-secondary" id="no-thanks" style="width: 100%; margin-top: 10px;">No Thanks</button>
+        </div>
+    </div>
+
+    <!-- Screen 10: Newsletter Signup -->
+    <div id="screen-newsletter" class="screen">
+        <div class="newsletter-popup">
+            <h3>Stay Updated!</h3>
+            <p>Subscribe to our newsletter for the latest updates and offers.</p>
+            <div class="form-group">
+                <input type="email" class="form-control" id="newsletter-email" placeholder="Enter your email">
+                <div class="error-message" id="newsletter-error">Please enter a valid email address</div>
+            </div>
+            <button class="btn btn-primary" id="subscribe-newsletter" style="width: 100%;">Subscribe</button>
+            <button class="btn btn-secondary" id="skip-newsletter" style="width: 100%; margin-top: 10px;">Maybe Later</button>
+        </div>
+    </div>
+
+    <!-- Screen 11: Survey -->
+    <div id="screen-survey" class="screen">
+        <div class="screen-content">
+            <h2>Help Us Improve!</h2>
+            <p>Please take a moment to rate your experience with our service:</p>
+            
+            <div class="survey-container">
+                <p>How would you rate your overall experience?</p>
+                <div class="star-rating" id="star-rating">
+                    <span class="star" data-value="1">★</span>
+                    <span class="star" data-value="2">★</span>
+                    <span class="star" data-value="3">★</span>
+                    <span class="star" data-value="4">★</span>
+                    <span class="star" data-value="5">★</span>
+                </div>
+                
+                <div class="form-group">
+                    <label for="survey-feedback">Share your feedback (optional)</label>
+                    <textarea class="form-control" id="survey-feedback" rows="3" placeholder="Your feedback helps us improve our service"></textarea>
+                </div>
+                
+                <button class="btn btn-primary" id="submit-survey">Submit Feedback</button>
+                <button class="btn btn-secondary" id="skip-survey">Skip</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Screen 12: Update Required -->
+    <div id="screen-update" class="screen">
+        <div class="update-required">
+            <h3>Update Required</h3>
+            <p>Your browser is running an outdated version of our application.</p>
+            <p>Please update to continue using all features.</p>
+            <div class="spinner"></div>
+            <p id="update-status">Checking for updates...</p>
+            <button class="btn btn-primary" id="update-now">Update Now</button>
+        </div>
+    </div>
+
+    <!-- Screen 13: Maintenance -->
+    <div id="screen-maintenance" class="screen">
+        <div class="maintenance-notice">
+            <p>Scheduled maintenance in progress. Some features may be temporarily unavailable.</p>
+        </div>
+        <div class="screen-content" style="text-align: center; margin-top: 60px;">
+            <h2>Scheduled Maintenance</h2>
+            <p>We are currently performing scheduled maintenance on our servers.</p>
+            <p>This process should be completed within <span id="maintenance-time">15:00</span> minutes.</p>
+            <p>Thank you for your patience.</p>
+            <button class="btn btn-primary" id="check-status">Check Status</button>
+        </div>
+    </div>
+
+    <!-- Notification -->
     <div class="notification" id="notification">
         <p id="notification-text">Your action has been completed successfully!</p>
     </div>
 
-    <div class="popup-ad" id="popup-ad">
-        <button class="close-btn" id="close-ad">&times;</button>
-        <h3>Special Offer!</h3>
-        <p>Get 50% off our premium services when you subscribe today!</p>
-        <button class="btn btn-primary">Learn More</button>
-    </div>
-
-    <div class="newsletter-popup" id="newsletter-popup">
-        <h3>Stay Updated!</h3>
-        <p>Subscribe to our newsletter for the latest updates and offers.</p>
-        <div class="form-group">
-            <input type="email" class="form-control" placeholder="Enter your email">
-        </div>
-        <button class="btn btn-primary">Subscribe</button>
-        <button class="btn btn-secondary" id="close-newsletter">No Thanks</button>
-    </div>
-
-    <div class="auto-logout-warning" id="auto-logout-warning">
-        <h3>Session Timeout</h3>
-        <p>You will be automatically logged out due to inactivity in <span class="countdown" id="logout-countdown">60</span> seconds.</p>
-        <p>Click below to remain logged in.</p>
-        <button class="btn btn-primary" id="stay-logged-in">Stay Logged In</button>
-    </div>
-
-    <!-- Loading screen removed as requested -->
-
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Loading screen code removed as requested
-
-            // Handle cookie banner
-            const cookieBanner = document.getElementById('cookie-banner');
-            const acceptCookiesBtn = document.getElementById('accept-cookies');
-            const cookiePreferencesBtn = document.getElementById('cookie-preferences');
-            const preferencesModal = document.getElementById('preferences-modal');
-            const savePreferencesBtn = document.getElementById('save-preferences');
-            const acceptAllPreferencesBtn = document.getElementById('accept-all-preferences');
-
-            acceptCookiesBtn.addEventListener('click', function() {
-                cookieBanner.style.display = 'none';
-                showNotification('Cookies accepted! Thank you for your cooperation.');
-                setTimeout(() => {
-                    showPopupAd();
-                }, 15000);
-            });
-
-            cookiePreferencesBtn.addEventListener('click', function() {
-                preferencesModal.style.display = 'flex';
-            });
-
-            savePreferencesBtn.addEventListener('click', function() {
-                preferencesModal.style.display = 'none';
-                cookieBanner.style.display = 'none';
-                showNotification('Cookie preferences saved!');
-            });
-
-            acceptAllPreferencesBtn.addEventListener('click', function() {
-                preferencesModal.style.display = 'none';
-                cookieBanner.style.display = 'none';
-                showNotification('All cookies accepted!');
-                setTimeout(() => {
-                    showPopupAd();
-                }, 15000);
-            });
-
+            // Screen management
+            const screens = document.querySelectorAll('.screen');
+            let currentScreen = 'screen-signup';
+            
+            function showScreen(screenId) {
+                // Hide all screens
+                screens.forEach(screen => {
+                    screen.classList.remove('active');
+                });
+                
+                // Show the requested screen
+                document.getElementById(screenId).classList.add('active');
+                currentScreen = screenId;
+            }
+            
             // Notification function
-            function showNotification(message) {
+            function showNotification(message, duration = 3000) {
                 const notification = document.getElementById('notification');
                 const notificationText = document.getElementById('notification-text');
                 notificationText.textContent = message;
                 notification.style.display = 'block';
                 setTimeout(() => {
                     notification.style.display = 'none';
-                }, 3000);
+                }, duration);
             }
-
-            // Handle login form
-            const loginForm = document.getElementById('login-form');
-            const loginButton = document.getElementById('login-button');
-            const emailInput = document.getElementById('email');
-            const passwordInput = document.getElementById('password');
-            const captchaInput = document.getElementById('captcha-input');
-            const emailError = document.getElementById('email-error');
-            const passwordError = document.getElementById('password-error');
-            const captchaError = document.getElementById('captcha-error');
-            const refreshCaptchaBtn = document.getElementById('refresh-captcha');
-            const captchaText = document.getElementById('captcha-text');
-            const strengthBar = document.getElementById('strength-bar');
-            const forgotPasswordBtn = document.getElementById('forgot-password');
-            const passwordModal = document.getElementById('password-modal');
-            const cancelResetBtn = document.getElementById('cancel-reset');
-            const sendResetBtn = document.getElementById('send-reset');
-            const resetEmailInput = document.getElementById('reset-email');
-            const resetEmailError = document.getElementById('reset-email-error');
-            const signupLink = document.getElementById('signup-link');
-            const signupModal = document.getElementById('signup-modal');
-            const cancelSignupBtn = document.getElementById('cancel-signup');
-            const createAccountBtn = document.getElementById('create-account');
-            const newEmailInput = document.getElementById('new-email');
-            const newPasswordInput = document.getElementById('new-password');
-            const confirmPasswordInput = document.getElementById('confirm-password');
-            const termsCheckbox = document.getElementById('terms');
-            const newEmailError = document.getElementById('new-email-error');
-            const newPasswordError = document.getElementById('new-password-error');
-            const confirmPasswordError = document.getElementById('confirm-password-error');
-            const termsError = document.getElementById('terms-error');
-            const newStrengthBar = document.getElementById('new-strength-bar');
-            const termsLink = document.getElementById('terms-link');
-            const loginContainer = document.getElementById('login-container');
-            const loginSuccess = document.getElementById('login-success');
-            const survey = document.getElementById('survey');
-            const starRating = document.getElementById('star-rating');
-            const stars = starRating.querySelectorAll('.star');
-            const submitFeedbackBtn = document.getElementById('submit-feedback');
-
+            
             // Generate random CAPTCHA
             function generateCaptcha() {
                 const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
@@ -673,136 +763,48 @@
                 for (let i = 0; i < 6; i++) {
                     captcha += chars.charAt(Math.floor(Math.random() * chars.length));
                 }
-                captchaText.textContent = captcha;
+                document.getElementById('captcha-text').textContent = captcha;
                 return captcha;
             }
-
+            
             let currentCaptcha = generateCaptcha();
-
-            refreshCaptchaBtn.addEventListener('click', function() {
-                currentCaptcha = generateCaptcha();
-                captchaInput.value = '';
-            });
-
+            
             // Password strength checker
-            function checkPasswordStrength(password, strengthElement) {
+            function checkPasswordStrength(password) {
+                const strengthBar = document.getElementById('strength-bar');
                 let strength = 0;
+                
                 if (password.length >= 8) strength += 25;
                 if (password.match(/[A-Z]/)) strength += 25;
                 if (password.match(/[0-9]/)) strength += 25;
                 if (password.match(/[^a-zA-Z0-9]/)) strength += 25;
                 
-                strengthElement.style.width = strength + '%';
+                strengthBar.style.width = strength + '%';
                 
                 if (strength < 50) {
-                    strengthElement.style.backgroundColor = '#e74c3c';
+                    strengthBar.style.backgroundColor = '#e74c3c';
                 } else if (strength < 75) {
-                    strengthElement.style.backgroundColor = '#f39c12';
+                    strengthBar.style.backgroundColor = '#f39c12';
                 } else {
-                    strengthElement.style.backgroundColor = '#2ecc71';
+                    strengthBar.style.backgroundColor = '#2ecc71';
                 }
                 
                 return strength >= 75;
             }
-
-            passwordInput.addEventListener('input', function() {
-                checkPasswordStrength(this.value, strengthBar);
-            });
-
-            newPasswordInput.addEventListener('input', function() {
-                checkPasswordStrength(this.value, newStrengthBar);
-            });
-
+            
             // Email validation
             function validateEmail(email) {
                 const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
                 return re.test(String(email).toLowerCase());
             }
-
-            // Login form submit
-            loginForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                // Show validation errors but proceed anyway
-                // Email validation for show only
-                if (!validateEmail(emailInput.value)) {
-                    emailError.style.display = 'block';
-                    // Don't set isValid to false so users can still proceed
-                } else {
-                    emailError.style.display = 'none';
-                }
-                
-                // Password validation for show only
-                if (!checkPasswordStrength(passwordInput.value, strengthBar)) {
-                    passwordError.style.display = 'block';
-                    // Don't set isValid to false so users can still proceed
-                } else {
-                    passwordError.style.display = 'none';
-                }
-                
-                // CAPTCHA validation for show only
-                if (captchaInput.value !== currentCaptcha) {
-                    captchaError.style.display = 'block';
-                    // Still let users through even with wrong CAPTCHA
-                    currentCaptcha = generateCaptcha();
-                    // Don't clear the captcha input so users can proceed
-                } else {
-                    captchaError.style.display = 'none';
-                }
-                
-                // Always proceed regardless of validation
-                loginButton.disabled = true;
-                loginButton.textContent = 'Signing in...';
-                
-                // Simulate loading
-                setTimeout(() => {
-                    loginContainer.style.display = 'none';
-                    loginSuccess.style.display = 'block';
-                    
-                    // Show auto-logout warning after some time
-                    setTimeout(() => {
-                        showAutoLogoutWarning();
-                    }, 30000);
-                    
-                    // Show survey after some time
-                    setTimeout(() => {
-                        loginSuccess.style.display = 'none';
-                        survey.style.display = 'block';
-                    }, 5000);
-                }, 3000);
-            });
-
-            // Forgot password
-            forgotPasswordBtn.addEventListener('click', function() {
-                passwordModal.style.display = 'flex';
-            });
-
-            cancelResetBtn.addEventListener('click', function() {
-                passwordModal.style.display = 'none';
-                resetEmailInput.value = '';
-                resetEmailError.style.display = 'none';
-            });
-
-            sendResetBtn.addEventListener('click', function() {
-                if (!validateEmail(resetEmailInput.value)) {
-                    resetEmailError.style.display = 'block';
-                } else {
-                    passwordModal.style.display = 'none';
-                    showNotification('Password reset link sent to your email!');
-                    resetEmailInput.value = '';
-                    resetEmailError.style.display = 'none';
-                }
-            });
-
-            // Signup modal
-            signupLink.addEventListener('click', function(e) {
-                e.preventDefault();
-                signupModal.style.display = 'flex';
-            });
-
-            cancelSignupBtn.addEventListener('click', function() {
-                signupModal.style.display = 'none';
-                newEmailInput.value = '';
-                newPasswordInput.value = '';
-                confirmPasswordInput.value = '';
-                termsCheckbox.checked = false;
+            
+            // Set up event listeners for each screen
+            
+            // 1. Signup Screen
+            const signupForm = document.getElementById('signup-form');
+            const signupEmailInput = document.getElementById('signup-email');
+            const signupPasswordInput = document.getElementById('signup-password');
+            const signupConfirmInput = document.getElementById('signup-confirm-password');
+            const signupTermsCheckbox = document.getElementById('signup-terms');
+            const signupEmailError = document.getElementById('signup-email-error');
+            const signupPasswordError = document.getElementById('signup-
