@@ -291,7 +291,7 @@
         <div class="modal-content">
             <h2>Recette de Cookie</h2>
             <div id="recipeText"></div>
-            <button id="closeRecipe" disabled>Fermer</button>
+            <button id="closeRecipe" class="hidden">Miam</button>
         </div>
     </div>
 
@@ -447,10 +447,8 @@
                         i++;
                         setTimeout(typeRecipe, 100);
                     } else {
-                        // Enable close button after 30 seconds
-                        setTimeout(() => {
-                            closeButton.disabled = false;
-                        }, 30000);
+                        // Show the "Miam" button immediately after text is fully displayed
+                        closeButton.classList.remove('hidden');
                     }
                 };
                 
@@ -534,7 +532,7 @@
             if (event.target === document.getElementById('termsModal')) {
                 document.getElementById('termsModal').style.display = 'none';
             }
-            if (event.target === document.getElementById('recipeModal') && !document.getElementById('closeRecipe').disabled) {
+            if (event.target === document.getElementById('recipeModal') && !document.getElementById('closeRecipe').classList.contains('hidden')) {
                 document.getElementById('recipeModal').style.display = 'none';
             }
         });
