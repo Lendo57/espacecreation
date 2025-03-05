@@ -1,4 +1,6 @@
-<!DOCTYPE html>
+if (event.target === document.getElementById('termsModal') && !document.getElementById('closeTerms').classList.contains('hidden')) {
+                document.getElementById('termsModal').style.display = 'none';
+            }<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -259,9 +261,9 @@
     <!-- Terms Modal -->
     <div id="termsModal" class="modal">
         <div class="modal-content">
-            <span class="close" id="closeTerms">&times;</span>
             <h2>Conditions</h2>
-            <p>En consultant cette oeuvre, vous serez heureux de restituer tous vos droits humains et spirituels à votre alter-ego virtuel. Vous consentez aux éventuelles séquelles mentales et physiques que peuvent vous infliger cette oeuvre. Vous acceptez de considérer cette oeuvre de la même façon que la Joconde. Vous jurez votre allégeance inconditionnelle au Grand Art.</p>
+            <div id="termsText"></div>
+            <button id="closeTerms" class="hidden">J'accepte</button>
         </div>
     </div>
 
@@ -298,6 +300,9 @@
     <!-- Loading Information Page -->
     <div class="container hidden" id="loadingInfoPage">
         <div id="loadingInfoText"></div>
+        <div class="loading-bar">
+            <div class="loading-progress" id="loadingInfoProgress"></div>
+        </div>
     </div>
 
     <!-- Error Page -->
@@ -313,11 +318,17 @@
         <h1>Veuillez patienter</h1>
         <div class="timer" id="timer">60</div>
         <p>Traitement en cours...</p>
+        <div class="loading-bar">
+            <div class="loading-progress" id="timerProgress"></div>
+        </div>
     </div>
 
     <!-- Thank You Page -->
     <div class="container hidden" id="thankYouPage">
         <div id="thankYouText"></div>
+        <div class="loading-bar">
+            <div class="loading-progress" id="thankYouProgress"></div>
+        </div>
     </div>
 
     <script>
@@ -362,6 +373,13 @@
         // Terms modal
         document.getElementById('termsLink').addEventListener('click', function() {
             document.getElementById('termsModal').style.display = 'block';
+            
+            // Simulate typing terms and conditions
+            const termsText = "En consultant cette oeuvre, vous serez heureux de restituer tous vos droits humains et spirituels à votre alter-ego virtuel. Vous consentez aux éventuelles séquelles mentales et physiques que peuvent vous infliger cette oeuvre. Vous acceptez de considérer cette oeuvre de la même façon que la Joconde. Vous jurez votre allégeance inconditionnelle au Grand Art.";
+            typeText('termsText', termsText, 50, function() {
+                // Show the accept button after text is fully displayed
+                document.getElementById('closeTerms').classList.remove('hidden');
+            });
         });
 
         document.getElementById('closeTerms').addEventListener('click', function() {
@@ -460,6 +478,11 @@
             document.getElementById('recipeModal').style.display = 'none';
             showPage('loadingInfoPage');
             
+            // Start the loading bar
+            setTimeout(() => {
+                document.getElementById('loadingInfoProgress').style.width = '100%';
+            }, 100);
+            
             typeText('loadingInfoText', 'Chargement de l\'oeuvre. Traitement de vos informations. Clonage de vos choix.', 100, function() {
                 setTimeout(() => {
                     showPage('errorPage');
@@ -486,6 +509,12 @@
         function startTimer() {
             let seconds = 60;
             const timerElement = document.getElementById('timer');
+            
+            // Start the loading bar
+            setTimeout(() => {
+                document.getElementById('timerProgress').style.width = '100%';
+            }, 100);
+            
             const interval = setInterval(() => {
                 seconds--;
                 timerElement.textContent = seconds;
@@ -493,6 +522,11 @@
                 if (seconds <= 0) {
                     clearInterval(interval);
                     showPage('thankYouPage');
+                    
+                    // Start the thank you loading bar
+                    setTimeout(() => {
+                        document.getElementById('thankYouProgress').style.width = '100%';
+                    }, 100);
                     
                     typeText('thankYouText', 'L\'oeuvre vous remercie pour votre contribution. Vous êtes désormais en mesure de comprendre.', 100, function() {
                         setTimeout(() => {
@@ -519,10 +553,16 @@
             } else if (randomPage === 'captchaPage') {
                 initCaptcha();
             } else if (randomPage === 'loadingInfoPage') {
+                setTimeout(() => {
+                    document.getElementById('loadingInfoProgress').style.width = '100%';
+                }, 100);
                 typeText('loadingInfoText', 'Chargement de l\'oeuvre. Traitement de vos informations. Clonage de vos choix.', 100);
             } else if (randomPage === 'timerPage') {
                 startTimer();
             } else if (randomPage === 'thankYouPage') {
+                setTimeout(() => {
+                    document.getElementById('thankYouProgress').style.width = '100%';
+                }, 100);
                 typeText('thankYouText', 'L\'oeuvre vous remercie pour votre contribution. Vous êtes désormais en mesure de comprendre.', 100);
             }
         }
