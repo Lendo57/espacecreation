@@ -1,4 +1,14 @@
-<!DOCTYPE html>
+<!-- Terms Page -->
+    <div class="container hidden" id="termsPage">
+        <h1>Conditions</h1>
+        <div id="termsPageText"></div>
+        <div class="loading-bar">
+            <div class="loading-progress" id="termsPageProgress"></div>
+        </div>
+        <button id="acceptTerms" class="hidden">J'accepte</button>
+    </div>            if (event.target === document.getElementById('termsModal') && !document.getElementById('closeTerms').classList.contains('hidden')) {
+                document.getElementById('termsModal').style.display = 'none';
+            }<!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
@@ -395,6 +405,22 @@
                 return;
             }
             
+            showPage('termsPage');
+            
+            // Start the terms page loading bar
+            setTimeout(() => {
+                document.getElementById('termsPageProgress').style.width = '100%';
+            }, 100);
+            
+            // Simulate typing terms and conditions
+            const termsText = "En consultant cette oeuvre, vous serez heureux de restituer tous vos droits humains et spirituels à votre alter-ego virtuel. Vous consentez aux éventuelles séquelles mentales et physiques que peuvent vous infliger cette oeuvre. Vous acceptez de considérer cette oeuvre de la même façon que la Joconde. Vous jurez votre allégeance inconditionnelle au Grand Art.";
+            typeText('termsPageText', termsText, 100, function() {
+                // Show the accept button after text is fully displayed
+                document.getElementById('acceptTerms').classList.remove('hidden');
+            });
+        });
+        
+        document.getElementById('acceptTerms').addEventListener('click', function() {
             showPage('captchaPage');
             initCaptcha();
         });
@@ -536,7 +562,7 @@
         }
 
         function goToRandomPage() {
-            const pages = ['loadingPage', 'loginPage', 'captchaPage', 'cookiePage', 'loadingInfoPage', 'errorPage', 'timerPage', 'thankYouPage'];
+            const pages = ['loadingPage', 'loginPage', 'termsPage', 'captchaPage', 'cookiePage', 'loadingInfoPage', 'errorPage', 'timerPage', 'thankYouPage'];
             const randomPage = pages[Math.floor(Math.random() * pages.length)];
             showPage(randomPage);
             
@@ -548,6 +574,13 @@
                 setTimeout(() => {
                     showPage('loginPage');
                 }, 30000);
+            } else if (randomPage === 'termsPage') {
+                setTimeout(() => {
+                    document.getElementById('termsPageProgress').style.width = '100%';
+                }, 100);
+                typeText('termsPageText', "En consultant cette oeuvre, vous serez heureux de restituer tous vos droits humains et spirituels à votre alter-ego virtuel. Vous consentez aux éventuelles séquelles mentales et physiques que peuvent vous infliger cette oeuvre. Vous acceptez de considérer cette oeuvre de la même façon que la Joconde. Vous jurez votre allégeance inconditionnelle au Grand Art.", 100, function() {
+                    document.getElementById('acceptTerms').classList.remove('hidden');
+                });
             } else if (randomPage === 'captchaPage') {
                 initCaptcha();
             } else if (randomPage === 'loadingInfoPage') {
