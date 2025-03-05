@@ -798,13 +798,12 @@
                 return re.test(String(email).toLowerCase());
             }
             
-            // Set up event listeners for each screen
-            
-            // 1. Signup Screen
-            const signupForm = document.getElementById('signup-form');
-            const signupEmailInput = document.getElementById('signup-email');
-            const signupPasswordInput = document.getElementById('signup-password');
-            const signupConfirmInput = document.getElementById('signup-confirm-password');
-            const signupTermsCheckbox = document.getElementById('signup-terms');
-            const signupEmailError = document.getElementById('signup-email-error');
-            const signupPasswordError = document.getElementById('signup-
+            // Set up the frustration flow sequence
+            const flowSequence = [
+                'screen-signup',      // 1. Signup form
+                'screen-captcha',     // 2. CAPTCHA verification
+                'screen-cookies',     // 3. Cookie consent
+                'screen-loading',     // 4. Loading screen
+                'screen-dashboard',   // 5. Dashboard
+                'screen-session-expired', // 6. Session expired
+                'screen-login',       //
