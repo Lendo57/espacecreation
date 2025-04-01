@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Expérience Artistique</title>
     <style>
         body {
@@ -16,28 +16,41 @@
             min-height: 100vh;
             color: #333;
             overflow-x: hidden;
+            touch-action: manipulation;
         }
         
         .container {
-            max-width: 600px;
+            width: 90%;
+            max-width: 500px;
             text-align: center;
-            padding: 20px;
+            padding: 15px;
             background-color: white;
             border-radius: 8px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            margin: 10px auto;
         }
         
         h1 {
-            margin-bottom: 30px;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+        
+        h2 {
+            font-size: 1.3rem;
+        }
+        
+        p {
+            font-size: 1rem;
+            margin: 10px 0;
         }
         
         .loading-bar {
             width: 100%;
-            height: 30px;
+            height: 25px;
             background-color: #e0e0e0;
             border-radius: 15px;
             overflow: hidden;
-            margin: 20px 0;
+            margin: 15px 0;
             position: relative;
         }
         
@@ -72,6 +85,7 @@
             animation: 
                 typing 3.5s steps(40, end),
                 blink-caret 0.75s step-end infinite;
+            font-size: 0.9rem;
         }
         
         @keyframes typing {
@@ -89,12 +103,16 @@
             flex-direction: column;
             gap: 15px;
             text-align: left;
+            width: 100%;
         }
         
         input, button {
-            padding: 10px;
+            padding: 12px;
             border-radius: 4px;
             border: 1px solid #ccc;
+            font-size: 16px; /* Prevent auto-zoom on iOS */
+            width: 100%;
+            box-sizing: border-box;
         }
         
         button {
@@ -103,6 +121,11 @@
             border: none;
             cursor: pointer;
             transition: background-color 0.3s;
+            touch-action: manipulation;
+            -webkit-appearance: none;
+            appearance: none;
+            margin-top: 10px;
+            height: 44px; /* More tappable */
         }
         
         button:hover {
@@ -111,8 +134,14 @@
         
         .checkbox-container {
             display: flex;
-            align-items: center;
+            align-items: flex-start;
             gap: 10px;
+        }
+        
+        .checkbox-container input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            margin-top: 3px;
         }
         
         .modal {
@@ -125,14 +154,15 @@
             height: 100%;
             overflow: auto;
             background-color: rgba(0,0,0,0.4);
+            touch-action: manipulation;
         }
         
         .modal-content {
             background-color: #fefefe;
-            margin: 15% auto;
+            margin: 10% auto;
             padding: 20px;
             border: 1px solid #888;
-            width: 80%;
+            width: 85%;
             max-width: 500px;
             border-radius: 5px;
             position: relative;
@@ -146,28 +176,33 @@
             font-size: 28px;
             font-weight: bold;
             cursor: pointer;
+            padding: 5px 10px;
         }
         
         .cookie-selection {
             display: flex;
             justify-content: space-around;
+            flex-wrap: wrap;
             margin-top: 20px;
+            gap: 10px;
         }
         
         .cookie-option {
             cursor: pointer;
             transition: transform 0.3s;
-            width: 100px;
-            height: 100px;
+            width: 80px;
+            height: 80px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             background-color: #f5f5f5;
             overflow: hidden;
+            font-size: 2.5rem;
+            touch-action: manipulation;
         }
         
-        .cookie-option:hover {
+        .cookie-option:hover, .cookie-option:active {
             transform: scale(1.1);
         }
         
@@ -182,36 +217,40 @@
         }
         
         .error-sign {
-            font-size: 72px;
+            font-size: 4rem;
             margin-bottom: 20px;
         }
         
         .timer {
-            font-size: 48px;
-            margin: 30px 0;
-        }
-        
-        .captcha-container {
+            font-size: 3rem;
             margin: 20px 0;
         }
         
+        .captcha-container {
+            margin: 15px 0;
+            width: 100%;
+        }
+        
         .captcha-game {
-            width: 300px;
-            height: 200px;
+            width: 100%;
+            max-width: 300px;
+            height: 180px;
             margin: 0 auto;
             background-color: #f0f0f0;
             position: relative;
             border: 1px solid #ccc;
             overflow: hidden;
+            touch-action: manipulation;
         }
         
         .captcha-item {
             position: absolute;
-            width: 20px;
-            height: 20px;
+            width: 25px;
+            height: 25px;
             background-color: red;
             border-radius: 50%;
             cursor: pointer;
+            touch-action: manipulation;
         }
 
         .hidden {
@@ -220,6 +259,46 @@
 
         .visible {
             display: block;
+        }
+        
+        /* Fix for iOS Safari zooming when typing */
+        @media screen and (-webkit-min-device-pixel-ratio:0) { 
+            select,
+            textarea,
+            input[type="text"],
+            input[type="password"] {
+                font-size: 16px;
+            }
+        }
+        
+        /* Make content scrollable in modal instead of entire page */
+        #recipeText, #termsText {
+            max-height: 60vh;
+            overflow-y: auto;
+            padding-right: 5px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+        }
+        
+        /* Fix for landscape orientation */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .container {
+                margin: 5px auto;
+                padding: 10px;
+            }
+            
+            h1 {
+                margin-bottom: 10px;
+                font-size: 1.3rem;
+            }
+            
+            .modal-content {
+                margin: 5% auto;
+            }
+            
+            .captcha-game {
+                height: 120px;
+            }
         }
     </style>
 </head>
@@ -346,6 +425,7 @@
                 page.classList.add('hidden');
             });
             document.getElementById(pageId).classList.remove('hidden');
+            window.scrollTo(0, 0); // Scroll to top when changing pages
         }
 
         // Simulated typing effect
@@ -367,8 +447,25 @@
             typeChar();
         }
 
+        // Prevent double-tap zoom on iOS
+        document.addEventListener('touchend', function(event) {
+            event.preventDefault();
+            // Process the tap normally
+            var targetElement = event.target;
+            if (targetElement && typeof targetElement.click === 'function') {
+                targetElement.click();
+            }
+        }, false);
+
         // Initial loading page
         document.addEventListener('DOMContentLoaded', function() {
+            // Force portrait orientation if possible
+            if (screen.orientation && screen.orientation.lock) {
+                screen.orientation.lock('portrait').catch(function() {
+                    // Silently fail if unsupported
+                });
+            }
+            
             setTimeout(() => {
                 document.getElementById('loadingProgress').style.width = '100%';
             }, 100);
@@ -379,7 +476,8 @@
         });
 
         // Terms modal
-        document.getElementById('termsLink').addEventListener('click', function() {
+        document.getElementById('termsLink').addEventListener('click', function(e) {
+            e.preventDefault(); // Prevent default behavior
             document.getElementById('termsModal').style.display = 'block';
             
             // Simulate typing terms and conditions
@@ -425,37 +523,50 @@
             initCaptcha();
         });
 
-        // Captcha game
+        // Captcha game - optimized for touch
         function initCaptcha() {
             const game = document.getElementById('captchaGame');
+            const gameRect = game.getBoundingClientRect();
             const item = document.createElement('div');
             item.className = 'captcha-item';
             
-            // Random position
-            const posX = Math.floor(Math.random() * 260);
-            const posY = Math.floor(Math.random() * 160);
+            // Random position within bounds
+            const posX = Math.floor(Math.random() * (gameRect.width - 30));
+            const posY = Math.floor(Math.random() * (gameRect.height - 30));
             
             item.style.left = posX + 'px';
             item.style.top = posY + 'px';
             
-            // Random movement
+            // Random movement - smoother and adjusted for mobile
+            let animationId;
+            
             function moveItem() {
-                const newX = Math.max(0, Math.min(280, parseInt(item.style.left) + (Math.random() * 20 - 10)));
-                const newY = Math.max(0, Math.min(180, parseInt(item.style.top) + (Math.random() * 20 - 10)));
+                const currentX = parseInt(item.style.left);
+                const currentY = parseInt(item.style.top);
+                
+                const newX = Math.max(0, Math.min(gameRect.width - 30, currentX + (Math.random() * 16 - 8)));
+                const newY = Math.max(0, Math.min(gameRect.height - 30, currentY + (Math.random() * 16 - 8)));
                 
                 item.style.left = newX + 'px';
                 item.style.top = newY + 'px';
                 
-                setTimeout(moveItem, 500);
+                animationId = requestAnimationFrame(moveItem);
             }
             
             game.appendChild(item);
-            moveItem();
+            animationId = requestAnimationFrame(moveItem);
             
-            item.addEventListener('click', function() {
-                clearTimeout(moveItem);
+            // Handle both click and touch
+            function captureItem() {
+                cancelAnimationFrame(animationId);
                 item.style.backgroundColor = 'green';
                 document.getElementById('captchaSubmit').disabled = false;
+            }
+            
+            item.addEventListener('click', captureItem);
+            item.addEventListener('touchstart', function(e) {
+                e.preventDefault(); // Prevent zoom and other touch behaviors
+                captureItem();
             });
         }
 
@@ -471,30 +582,37 @@
         };
 
         document.querySelectorAll('.cookie-option').forEach(option => {
-            option.addEventListener('click', function() {
-                const cookieType = this.getAttribute('data-cookie');
-                const recipeModal = document.getElementById('recipeModal');
-                const recipeText = document.getElementById('recipeText');
-                const closeButton = document.getElementById('closeRecipe');
-                
-                recipeModal.style.display = 'block';
-                recipeText.innerHTML = '';
-                
-                // Simulate typing the recipe
-                let i = 0;
-                const recipe = cookieRecipes[cookieType];
-                const typeRecipe = function() {
-                    if (i < recipe.length) {
-                        recipeText.innerHTML += recipe.charAt(i);
-                        i++;
-                        setTimeout(typeRecipe, 100);
-                    } else {
-                        // Show the "Miam" button immediately after text is fully displayed
-                        closeButton.classList.remove('hidden');
+            ['click', 'touchstart'].forEach(eventType => {
+                option.addEventListener(eventType, function(e) {
+                    if (eventType === 'touchstart') {
+                        e.preventDefault(); // Prevent zoom
                     }
-                };
-                
-                typeRecipe();
+                    
+                    const cookieType = this.getAttribute('data-cookie');
+                    const recipeModal = document.getElementById('recipeModal');
+                    const recipeText = document.getElementById('recipeText');
+                    const closeButton = document.getElementById('closeRecipe');
+                    
+                    recipeModal.style.display = 'block';
+                    recipeText.innerHTML = '';
+                    
+                    // Simulate typing the recipe
+                    let i = 0;
+                    const recipe = cookieRecipes[cookieType];
+                    const typeRecipe = function() {
+                        if (i < recipe.length) {
+                            recipeText.innerHTML += recipe.charAt(i);
+                            recipeText.scrollTop = recipeText.scrollHeight; // Auto-scroll
+                            i++;
+                            setTimeout(typeRecipe, 100);
+                        } else {
+                            // Show the "Miam" button immediately after text is fully displayed
+                            closeButton.classList.remove('hidden');
+                        }
+                    };
+                    
+                    typeRecipe();
+                });
             });
         });
 
@@ -607,6 +725,20 @@
                 document.getElementById('recipeModal').style.display = 'none';
             }
         });
+        
+        // Prevent scale/zoom on double tap (iOS Safari)
+        document.addEventListener('touchstart', function(event) {
+            if (event.touches.length > 1) {
+                event.preventDefault();
+            }
+        }, { passive: false });
+        
+        // Prevent pull-to-refresh
+        document.body.addEventListener('touchmove', function(e) {
+            if (window.pageYOffset === 0 && e.touches[0].clientY > 0) {
+                e.preventDefault();
+            }
+        }, { passive: false });
     </script>
 </body>
 </html>
