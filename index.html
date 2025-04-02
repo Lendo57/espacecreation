@@ -447,18 +447,18 @@
             typeChar();
         }
 
-     // Prevent double-tap zoom on iOS, but allow input field interaction
-document.addEventListener('touchend', function(event) {
-    // Skip preventDefault for input fields to allow typing
-    if (event.target.tagName !== 'INPUT') {
-        event.preventDefault();
-        // Process the tap normally
-        var targetElement = event.target;
-        if (targetElement && typeof targetElement.click === 'function') {
-            targetElement.click();
-        }
-    }
-}, false);
+        // Prevent double-tap zoom on iOS, but allow input field interaction
+        document.addEventListener('touchend', function(event) {
+            // Skip preventDefault for input fields to allow typing
+            if (event.target.tagName !== 'INPUT') {
+                event.preventDefault();
+                // Process the tap normally
+                var targetElement = event.target;
+                if (targetElement && typeof targetElement.click === 'function') {
+                    targetElement.click();
+                }
+            }
+        }, false);
 
         // Initial loading page
         document.addEventListener('DOMContentLoaded', function() {
@@ -484,7 +484,7 @@ document.addEventListener('touchend', function(event) {
             document.getElementById('termsModal').style.display = 'block';
             
             // Simulate typing terms and conditions
-            const termsText = "En consultant cette oeuvre, vous serez heureux de restituer tous vos droits humains et spirituels à votre alter-ego virtuel. Vous consentez aux éventuelles séquelles mentales et physiques que peuvent vous infliger cette oeuvre. Vous acceptez de considérer cette oeuvre de la même façon que la <i>Joconde</i>. Vous jurez votre allégeance inconditionnelle au Grand Art.";
+            const termsText = "En consultant cette oeuvre, vous serez heureux de restituer tous vos droits humains et spirituels à votre alter-ego virtuel. Vous consentez aux éventuelles séquelles mentales et physiques que peuvent vous infliger cette oeuvre. Vous acceptez de considérer cette oeuvre de la même façon que la Joconde. Vous jurez votre allégeance inconditionnelle au Grand Art.";
             typeText('termsText', termsText, 50, function() {
                 // Show the accept button after text is fully displayed
                 document.getElementById('closeTerms').classList.remove('hidden');
@@ -577,45 +577,57 @@ document.addEventListener('touchend', function(event) {
             showPage('cookiePage');
         });
 
-        // Cookie selection
+        // Cookie selection - FIXED to prevent multiple events
         const cookieRecipes = {
             chocolate: "Recette de cookies aux pépites de chocolat:\n\n- 250g de farine\n- 150g de sucre\n- 125g de beurre\n- 1 œuf\n- 100g de pépites de chocolat\n- 1 sachet de levure chimique\n- 1 pincée de sel\n\nMélanger le beurre et le sucre. Ajouter l'œuf, puis la farine, la levure et le sel. Incorporer les pépites de chocolat. Former des boules de pâte et les disposer sur une plaque. Cuire 10 minutes à 180°C.",
             oatmeal: "Recette de cookies à l'avoine:\n\n- 200g de flocons d'avoine\n- 150g de farine\n- 120g de sucre brun\n- 125g de beurre\n- 1 œuf\n- 1 sachet de levure chimique\n- 1 cuillère à café de cannelle\n- 1 pincée de sel\n\nMélanger le beurre ramolli et le sucre. Ajouter l'œuf, puis la farine, la levure, la cannelle et le sel. Incorporer les flocons d'avoine. Former des boules de pâte et les disposer sur une plaque. Cuire 12 minutes à 175°C.",
             sugar: "Recette de cookies au sucre:\n\n- 280g de farine\n- 170g de sucre\n- 140g de beurre\n- 1 œuf\n- 1 sachet de levure chimique\n- 1 cuillère à café d'extrait de vanille\n- 1 pincée de sel\n\nMélanger le beurre et le sucre. Ajouter l'œuf et la vanille, puis la farine, la levure et le sel. Former des boules de pâte, les aplatir légèrement et les saupoudrer de sucre. Cuire 8-10 minutes à 180°C."
         };
 
+        // Function to handle cookie selection - moved outside the event listener
+        function handleCookieSelection(element) {
+            const cookieType = element.getAttribute('data-cookie');
+            const recipeModal = document.getElementById('recipeModal');
+            const recipeText = document.getElementById('recipeText');
+            const closeButton = document.getElementById('closeRecipe');
+            
+            recipeModal.style.display = 'block';
+            recipeText.innerHTML = '';
+            closeButton.classList.add('hidden');
+            
+            // Simulate typing the recipe
+            let i = 0;
+            const recipe = cookieRecipes[cookieType];
+            
+            function typeRecipe() {
+                if (i < recipe.length) {
+                    recipeText.innerHTML += recipe.charAt(i);
+                    recipeText.scrollTop = recipeText.scrollHeight; // Auto-scroll
+                    i++;
+                    setTimeout(typeRecipe, 100);
+                } else {
+                    // Show the "Miam" button immediately after text is fully displayed
+                    closeButton.classList.remove('hidden');
+                }
+            }
+            
+            typeRecipe();
+        }
+
+        // Add event listeners for cookie options
         document.querySelectorAll('.cookie-option').forEach(option => {
-            ['click', 'touchstart'].forEach(eventType => {
-                option.addEventListener(eventType, function(e) {
-                    if (eventType === 'touchstart') {
-                        e.preventDefault(); // Prevent zoom
-                    }
-                    
-                    const cookieType = this.getAttribute('data-cookie');
-                    const recipeModal = document.getElementById('recipeModal');
-                    const recipeText = document.getElementById('recipeText');
-                    const closeButton = document.getElementById('closeRecipe');
-                    
-                    recipeModal.style.display = 'block';
-                    recipeText.innerHTML = '';
-                    
-                    // Simulate typing the recipe
-                    let i = 0;
-                    const recipe = cookieRecipes[cookieType];
-                    const typeRecipe = function() {
-                        if (i < recipe.length) {
-                            recipeText.innerHTML += recipe.charAt(i);
-                            recipeText.scrollTop = recipeText.scrollHeight; // Auto-scroll
-                            i++;
-                            setTimeout(typeRecipe, 100);
-                        } else {
-                            // Show the "Miam" button immediately after text is fully displayed
-                            closeButton.classList.remove('hidden');
-                        }
-                    };
-                    
-                    typeRecipe();
-                });
+            // Use only touchstart for mobile devices
+            option.addEventListener('touchstart', function(e) {
+                e.preventDefault(); // Prevent zoom
+                handleCookieSelection(this);
+            });
+            
+            // For non-touch devices
+            option.addEventListener('click', function(e) {
+                // Only process click if it's not a touch device
+                if (!('ontouchstart' in window)) {
+                    handleCookieSelection(this);
+                }
             });
         });
 
