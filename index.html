@@ -475,7 +475,7 @@ document.addEventListener('touchend', function(event) {
             
             setTimeout(() => {
                 showPage('loginPage');
-            }, 30000); // 30 seconds loading
+            }, 15000); // 15 seconds loading
         });
 
         // Terms modal
@@ -484,7 +484,7 @@ document.addEventListener('touchend', function(event) {
             document.getElementById('termsModal').style.display = 'block';
             
             // Simulate typing terms and conditions
-            const termsText = "En consultant cette oeuvre, vous serez heureux de restituer tous vos droits humains et spirituels à votre alter-ego virtuel. Vous consentez aux éventuelles séquelles mentales et physiques que peuvent vous infliger cette oeuvre. Vous acceptez de considérer cette oeuvre de la même façon que la Joconde. Vous jurez votre allégeance inconditionnelle au Grand Art.";
+            const termsText = "En consultant cette oeuvre, vous serez heureux de restituer tous vos droits humains et spirituels à votre alter-ego virtuel. Vous consentez aux éventuelles séquelles mentales et physiques que peuvent vous infliger cette oeuvre. Vous acceptez de considérer cette oeuvre de la même façon que la <i>Joconde</i>. Vous jurez votre allégeance inconditionnelle au Grand Art.";
             typeText('termsText', termsText, 50, function() {
                 // Show the accept button after text is fully displayed
                 document.getElementById('closeTerms').classList.remove('hidden');
@@ -631,7 +631,7 @@ document.addEventListener('touchend', function(event) {
             typeText('loadingInfoText', 'Chargement de l\'oeuvre. Traitement de vos informations. Clonage de vos choix.', 100, function() {
                 setTimeout(() => {
                     showPage('errorPage');
-                }, 30000);
+                }, 15000);
             });
         });
 
