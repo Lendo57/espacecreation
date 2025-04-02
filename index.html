@@ -447,15 +447,18 @@
             typeChar();
         }
 
-        // Prevent double-tap zoom on iOS
-        document.addEventListener('touchend', function(event) {
-            event.preventDefault();
-            // Process the tap normally
-            var targetElement = event.target;
-            if (targetElement && typeof targetElement.click === 'function') {
-                targetElement.click();
-            }
-        }, false);
+     // Prevent double-tap zoom on iOS, but allow input field interaction
+document.addEventListener('touchend', function(event) {
+    // Skip preventDefault for input fields to allow typing
+    if (event.target.tagName !== 'INPUT') {
+        event.preventDefault();
+        // Process the tap normally
+        var targetElement = event.target;
+        if (targetElement && typeof targetElement.click === 'function') {
+            targetElement.click();
+        }
+    }
+}, false);
 
         // Initial loading page
         document.addEventListener('DOMContentLoaded', function() {
